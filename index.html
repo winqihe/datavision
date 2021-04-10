@@ -73,10 +73,19 @@
                         <li style="font-size:xx-large;">进店人数 ：1258</li>
                     </ul>
                 </div>
-                <div class="no-bd">
-                    <ul>
-                        <li></li>
-                    </ul>
+                <div class="weather-box">
+                    <div class="data">
+                        <p class="time" id="time">00:00:00</p>
+                        <p id="date"></p>
+                    </div>
+                    <div class="weather">
+                        <img id="weatherImg" src="images/weather/weather_img01.png" alt="">
+                        <div id="weather">
+                            <p class="active">晴天</p>
+                            <p>16-22℃</p>
+                            <p>新乡市</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="map">
@@ -208,6 +217,149 @@
         width: 100%;
         height: 100%;
     }
+    
+    .weather-box {
+        width: 5rem;
+        height: 1.3rem;
+        border: 1px solid #0E94EA;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0 0 0 135px;
+    }
+    
+    .weather-box>.data {
+        width: 2.19rem;
+        height: 0.65rem;
+        border-right: 2px solid #cdddf7;
+    }
+    
+    .data>p {
+        font-size: 0.16rem;
+        margin: 0 5px;
+        color: #cdddf7;
+        text-align: center;
+        margin: 0;
+    }
+    
+    .data>p>span {
+        margin: 0 5px;
+    }
+    
+    .data>p.time {
+        font-size: 0.42rem;
+        height: 0.42rem;
+        line-height: 0.42rem;
+    }
+    
+    .weather-box>.weather {
+        width: 1.8rem;
+        height: 0.65rem;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 10px;
+    }
+    
+    .weather>img {
+        height: 100%;
+    }
+    
+    .weather>div {
+        width: 0.8rem;
+        height: 100%;
+    }
+    
+    .weather>div>p {
+        font-size: 0.12rem;
+        color: #cdddf7;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 0.24rem;
+        line-height: 0.24rem;
+    }
+    
+    .weather>div>p.active {
+        color: white;
+        font-size: 0.16rem;
+    }
+    
+    .time-box {
+        width: 3.9rem;
+        height: 0.4rem;
+        position: absolute;
+        top: 5px;
+        right: 0;
+        overflow: hidden;
+        z-index: 10;
+        display: none;
+    }
+    
+    .time-div {
+        float: left;
+        width: 1.8rem;
+        height: 0.4rem;
+        position: relative;
+    }
+    
+    .time-div.end {
+        float: right;
+    }
+    
+    .time-div>img {
+        width: 0.2rem;
+        height: 0.2rem;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0.1rem;
+    }
+    
+    .time-input {
+        width: 1.8rem;
+        height: 0.4rem;
+        box-sizing: border-box;
+        border: 1px solid #0E94EA;
+        font-size: 0.16rem;
+        background: rgba(14, 148, 234, 0.2);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #cdddf7;
+        padding-left: 10px;
+    }
 </style>
+<script type="text/javascript">
+    $('document').ready(function() {
+        $("body").css('visibility', 'visible');
+        var localData = [$('#teacher').val(), $('#start').val() + '/' + $('#end').val(), $('#leader').val()]
+        localStorage.setItem("data", localData);
+
+    })
+
+    function fnW(str) {
+        var num;
+        str >= 10 ? num = str : num = "0" + str;
+        return num;
+    }
+    var timer = setInterval(function() {
+        var date = new Date();
+        var year = date.getFullYear(); //当前年份
+        var month = date.getMonth(); //当前月份
+        var data = date.getDate(); //天
+        var hours = date.getHours(); //小时
+        var minute = date.getMinutes(); //分
+        var second = date.getSeconds(); //秒
+        var day = date.getDay(); //获取当前星期几 
+        var ampm = hours < 12 ? 'am' : 'pm';
+        $('#time').html(fnW(hours) + ":" + fnW(minute) + ":" + fnW(second));
+        $('#date').html('<span>' + year + '/' + (month + 1) + '/' + data + '</span><span>' + ampm + '</span><span>周' + day + '</span>')
+
+    }, 1000)
+</script>
 
 </html>
