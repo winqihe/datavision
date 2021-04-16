@@ -8,197 +8,6 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="./css/swiper-bundle.min.css">
 </head>
-
-<body>
-    <header>
-        <h1>工学院餐饮</h1>
-        <div class="showTime">NowTime：2020年3月17-0时54分14秒</div>
-        <script>
-            var t = null;
-            t = setTimeout(time, 1000); //開始运行
-            function time() {
-                clearTimeout(t); //清除定时器
-                dt = new Date();
-                var y = dt.getFullYear();
-                var mt = dt.getMonth() + 1;
-                var day = dt.getDate();
-                var h = dt.getHours(); //获取时
-                var m = dt.getMinutes(); //获取分
-                var s = dt.getSeconds(); //获取秒
-                document.querySelector(".showTime").innerHTML =
-                    "当前时间：" +
-                    y +
-                    "年" +
-                    mt +
-                    "月" +
-                    day +
-                    "-" +
-                    h +
-                    "时" +
-                    m +
-                    "分" +
-                    s +
-                    "秒";
-                t = setTimeout(time, 1000); //设定定时器，循环运行
-            }
-        </script>
-    </header>
-    <section class="mainbox">
-        <div class="column">
-            <div class="panel bar">
-                <h2>
-                    今日Top
-                </h2>
-                <!--设置成滚状的文本轮播的形态，将最近卖出的菜品进行轮播-->
-                <div class="chart"></div>
-                <div class="panel-footer"></div>
-            </div>
-            <div class="panel line">
-                <h2>人气推荐</h2>
-                <!--按照数据中对菜品的评分进行推荐-->
-                <div class="chart"></div>
-                <div class="panel-footer"></div>
-            </div>
-            <div class="panel pie">
-                <h2>今天吃什么</h2>
-                <!--饼图，按照百分比来进行展示今天一些菜点的趋势-->
-                <div class="chart"></div>
-                <div class="panel-footer"></div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="no">
-                <div class="no-hd">
-                    <ul>
-                        <li style="font-size:xx-large;">进店人数 ：1258</li>
-                    </ul>
-                </div>
-                <div class="weather-box">
-                    <div class="data">
-                        <p class="time" id="time">00:00:00</p>
-                        <p id="date"></p>
-                    </div>
-                    <div class="weather">
-                        <img id="weatherImg" src="images/weather/weather_img01.png" alt="">
-                        <div id="weather">
-                            <p class="active">晴天</p>
-                            <p>16-22℃</p>
-                            <p>新乡市</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="map">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="./images/img.jpg" alt="" width="600px" height="450px">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="./images/img3.jpg" alt="" width="600px" height="450px">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="./images/img4.jpg" alt="" width="600px" height="450px">
-                    </div>
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        </div>
-        <div class="column">
-            <div class="panel bar1">
-                <h2>烹饪时间</h2>
-                <!--根据目前数据中购买最多的菜品进行展示-->
-                <div class="chart"></div>
-                <div class="panel-footer"></div>
-            </div>
-            <div class="panel line1">
-                <h2>你的口味</h2>
-                <div class="sale">
-                    <ul>
-                        <li>
-                            <div class="salelist">
-                                <div class="salename1">蜜汁烤肉饭
-                                    <span class="saletime">2020/08/20/12:00</span> </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="salelist">
-                                <div class="salename2">西部大盘鸡
-                                    <span class="saletime">2020/08/20/12:00</span> </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="salelist">
-                                <div class="salename3">串串香
-                                    <span class="saletime">2020/08/20/12:00</span> </div>
-                            </div>
-                            <div class="salelist">
-                                <div class="salename4">红烧大鲤鱼
-                                    <span class="saletime">2020/08/20/12:00</span> </div>
-                            </div>
-                            <div class="salelist">
-                                <div class="salename5">清蒸黄焖鸡
-                                    <span class="saletime">2020/08/20/12:00</span> </div>
-                            </div>
-                            <div class="salelist">
-                                <div class="salename6">烤肉饭
-                                    <span class="saletime">2020/08/20/12:00</span> </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="chart"></div>
-                <div class="panel-footer"></div>
-            </div>
-            <div class="panel pie1">
-                <h2>本店特色</h2>
-                <div class="chart"></div>
-                <div class="panel-footer"></div>
-            </div>
-        </div>
-    </section>
-    <script src="js/flexible.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/echarts.js"></script>
-    <script src="js/echarts-wordcloud.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/china.js"></script>
-    <script src="js/jcarousellite.js"></script>
-    <script src="js/swiper-bundle.min.js"></script>
-    <script>
-        $(function() {
-            function apiFn() {
-                this.hostname = ""
-            }
-            apiFn.prototype = {
-                Init: function() {
-                    this.policyFn()
-                },
-                policyFn: function() {
-                    $(".sale").jCarouselLite({
-                        vertical: true,
-                        hoverPause: true,
-                        visible: 4,
-                        auto: 1000,
-                        speed: 500
-                    });
-                },
-            }
-            var start = new apiFn()
-            start.Init()
-        })
-    </script>
-    <script>
-        var swiper = new Swiper('.map', {
-            pagination: {
-                el: '.swiper-pagination',
-            },
-            loop: true,
-            autoplay: true,
-        });
-    </script>
-</body>
 <style>
     .sale {
         font-size: 14px;
@@ -207,10 +16,15 @@
         color: white;
         text-align: left;
     }
+    /* .salelist {
+        font-size: 14px;
+        line-height: 1.6vw;
+        height: 1.6vw;
+        color: white;
+    } */
     
     .saletime {
         float: right;
-        ;
     }
     
     .swiper-container {
@@ -333,6 +147,222 @@
         padding-left: 10px;
     }
 </style>
+
+<body>
+    <header>
+        <h1>工学院餐饮</h1>
+        <div class="showTime">NowTime：2020年3月17-0时54分14秒</div>
+        <script>
+            var t = null;
+            t = setTimeout(time, 1000); //開始运行
+            function time() {
+                clearTimeout(t); //清除定时器
+                dt = new Date();
+                var y = dt.getFullYear();
+                var mt = dt.getMonth() + 1;
+                var day = dt.getDate();
+                var h = dt.getHours(); //获取时
+                var m = dt.getMinutes(); //获取分
+                var s = dt.getSeconds(); //获取秒
+                document.querySelector(".showTime").innerHTML =
+                    "当前时间：" +
+                    y +
+                    "年" +
+                    mt +
+                    "月" +
+                    day +
+                    "-" +
+                    h +
+                    "时" +
+                    m +
+                    "分" +
+                    s +
+                    "秒";
+                t = setTimeout(time, 1000); //设定定时器，循环运行
+            }
+        </script>
+    </header>
+    <section class="mainbox">
+        <div class="column">
+            <div class="panel bar">
+                <h2>
+                    今日Top
+                </h2>
+                <!--设置成滚状的文本轮播的形态，将最近卖出的菜品进行轮播-->
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <div class="panel line">
+                <h2>人气推荐</h2>
+                <!--按照数据中对菜品的评分进行推荐-->
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <div class="panel pie">
+                <h2>今天吃什么</h2>
+                <!--饼图，按照百分比来进行展示今天一些菜点的趋势-->
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="no">
+                <div class="no-hd">
+                    <ul>
+                        <li style="font-size:xx-large;">进店人数 ：1258</li>
+                    </ul>
+                </div>
+                <div class="weather-box">
+                    <div class="data">
+                        <p class="time" id="time">00:00:00</p>
+                        <p id="date"></p>
+                    </div>
+                    <div class="weather">
+                        <img id="weatherImg" src="images/weather/weather_img01.png" alt="">
+                        <div id="weather">
+                            <p class="active">晴天</p>
+                            <p>16-22℃</p>
+                            <p>新乡市</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./images/img.jpg" alt="" width="600px" height="450px">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/img3.jpg" alt="" width="600px" height="450px">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/img4.jpg" alt="" width="600px" height="450px">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        </div>
+        <div class="column">
+            <div class="panel bar1">
+                <h2>等待时间</h2>
+                <!--根据目前数据中购买最多的菜品进行展示-->
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <div class="panel line1">
+                <h2>你的口味</h2>
+                <div class="sale">
+                    <ul>
+                        <li>
+                            <div class="salelist">
+                                <div class="salename1">{{name1}}
+                                    <span class="saletime">{{category1}}</span> </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="salelist">
+                                <div class="salename2">{{name2}}
+                                    <span class="saletime">{{category2}}</span> </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="salelist">
+                                <div class="salename3">{{name3}}
+                                    <span class="saletime">{{category3}}</span> </div>
+                            </div>
+                            <div class="salelist">
+                                <div class="salename4">{{name4}}
+                                    <span class="saletime">{{category4}}</span> </div>
+                            </div>
+                            <div class="salelist">
+                                <div class="salename5">{{name5}}
+                                    <span class="saletime">{{category5}}</span> </div>
+                            </div>
+                            <div class="salelist">
+                                <div class="salename6">{{name6}}
+                                    <span class="saletime">{{category6}}</span> </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer"></div>
+            </div>
+            <div class="panel pie1">
+                <h2>卫生检测</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+    </section>
+    <script src="js/flexible.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/echarts-wordcloud.js"></script>
+    <script src="js/china.js"></script>
+    <script src="js/jcarousellite.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        $(function() {
+            function apiFn() {
+                this.hostname = ""
+            }
+            apiFn.prototype = {
+                Init: function() {
+                    this.policyFn()
+                },
+                policyFn: function() {
+                    $(".sale").jCarouselLite({
+                        vertical: true,
+                        hoverPause: true,
+                        visible: 4,
+                        auto: 1000,
+                        speed: 500
+                    });
+                },
+            }
+            var start = new apiFn()
+            start.Init()
+        })
+        var swiper = new Swiper('.map', {
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            loop: true,
+            autoplay: true,
+        });
+    </script>
+</body>
+
+
+<!--category数据-->
+<script>
+    axios.get("http://localhost:8081/categorydata").then(res => {
+        var categorydata = new Array()
+        categorydata = res.data
+        console.log(categorydata)
+        new Vue({
+            el: '.sale',
+            data: {
+                name1: categorydata[0][0],
+                name2: categorydata[1][0],
+                name3: categorydata[2][0],
+                name4: categorydata[3][0],
+                name5: categorydata[4][0],
+                name6: categorydata[5][0],
+                category1: categorydata[0][1],
+                category2: categorydata[1][1],
+                category3: categorydata[2][1],
+                category4: categorydata[3][1],
+                category5: categorydata[4][1],
+                category6: categorydata[5][1]
+            },
+        })
+    })
+</script>
 <script type="text/javascript">
     $('document').ready(function() {
         $("body").css('visibility', 'visible');
@@ -360,6 +390,797 @@
         $('#date').html('<span>' + year + '/' + (month + 1) + '/' + data + '</span><span>' + ampm + '</span><span>周' + day + '</span>')
 
     }, 1000)
+</script>
+
+<script>
+    (function() {
+        var myChart = echarts.init(document.querySelector(".bar .chart"));
+        axios.get('http://localhost:8081/getall').then(res => {
+            var adata = new Array()
+            adata = res.data
+                //数据
+            let data = [{
+                "code": "600519",
+                "stock": adata[0].name,
+                "fundPost": adata[0].price
+            }, {
+                "code": "000858",
+                "stock": adata[1].name,
+                "fundPost": adata[1].price
+            }, {
+                "code": "002475",
+                "stock": adata[2].name,
+                "fundPost": adata[2].price
+            }, {
+                "code": "600276",
+                "stock": adata[3].name,
+                "fundPost": adata[3].price
+            }, {
+                "code": "601318",
+                "stock": adata[4].name,
+                "fundPost": adata[4].price
+            }, ]
+
+            function contains(arr, dst) {
+                var i = arr.length;
+                while ((i -= 1)) {
+                    if (arr[i] == dst) {
+                        return i;
+                    }
+                }
+                return false;
+            }
+            var attackSourcesColor = [
+                new echarts.graphic.LinearGradient(0, 1, 1, 1, [{
+                    offset: 0,
+                    color: "#EB3B5A"
+                }, {
+                    offset: 1,
+                    color: "#FE9C5A"
+                }]),
+                new echarts.graphic.LinearGradient(0, 1, 1, 1, [{
+                    offset: 0,
+                    color: "#FA8231"
+                }, {
+                    offset: 1,
+                    color: "#FFD14C"
+                }]),
+                new echarts.graphic.LinearGradient(0, 1, 1, 1, [{
+                    offset: 0,
+                    color: "#F7B731"
+                }, {
+                    offset: 1,
+                    color: "#FFEE96"
+                }]),
+                new echarts.graphic.LinearGradient(0, 1, 1, 1, [{
+                    offset: 0,
+                    color: "#395CFE"
+                }, {
+                    offset: 1,
+                    color: "#2EC7CF"
+                }])
+            ];
+            var attackSourcesColor1 = [
+                "#EB3B5A",
+                "#FA8231",
+                "#F7B731",
+                "#3860FC",
+                "#1089E7",
+            ];
+            var attaData = [];
+            var attaName = [];
+            var topName = []
+            data.forEach((it, index) => {
+                attaData[index] = parseFloat(it.fundPost);
+                attaName[index] = it.stock;
+                topName[index] = `${it.code} ${it.stock}`
+            });
+            var salvProMax = []; //背景按最大值
+            for (let i = 0; i < attaData.length; i++) {
+                salvProMax.push(attaData[0]);
+            }
+
+            function attackSourcesDataFmt(sData) {
+                var sss = [];
+                sData.forEach(function(item, i) {
+                    let itemStyle = {
+                        color: i > 3 ? attackSourcesColor[3] : attackSourcesColor[i]
+                    };
+                    sss.push({
+                        value: item,
+                        itemStyle: itemStyle
+                    });
+                });
+                return sss;
+            }
+            var option = {
+                tooltip: {
+                    show: false,
+                    backgroundColor: "rgba(3,169,244, 0.5)", //背景颜色（此时为默认色）
+                    textStyle: {
+                        fontSize: 16
+                    }
+                },
+                color: ["#F7B731"],
+
+                grid: {
+                    //进行配置
+                    left: "1%",
+                    right: "2%",
+                    width: "95%",
+                    bottom: "2%",
+                    top: "8%",
+                    containLabel: true
+                },
+                xAxis: {
+                    type: "value",
+
+                    splitLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    }
+                },
+                yAxis: [{
+                    type: "category",
+                    inverse: true,
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisPointer: {
+                        label: {
+                            show: true,
+                            //margin: 30
+                        }
+                    },
+                    pdaaing: [5, 0, 0, 0],
+                    postion: "right",
+                    data: attaName,
+                    axisLabel: {
+                        margin: 30,
+                        fontSize: 10,
+                        align: "left",
+                        padding: [2, 0, 0, 0],
+                        color: "#000",
+                        rich: {
+                            nt1: {
+                                color: "#fff",
+                                backgroundColor: attackSourcesColor1[0],
+                                width: 13,
+                                height: 13,
+                                fontSize: 10,
+                                align: "center",
+                                borderRadius: 100,
+                                lineHeight: "5",
+                                padding: [0, 1, 2, 1]
+                                    // padding:[0,0,2,0],
+                            },
+                            nt2: {
+                                color: "#fff",
+                                backgroundColor: attackSourcesColor1[1],
+                                width: 13,
+                                height: 13,
+                                fontSize: 10,
+                                align: "center",
+                                borderRadius: 100,
+                                padding: [0, 1, 2, 1]
+                            },
+                            nt3: {
+                                color: "#fff",
+                                backgroundColor: attackSourcesColor1[2],
+                                width: 13,
+                                height: 13,
+                                fontSize: 10,
+                                align: "center",
+                                borderRadius: 100,
+                                padding: [0, 1, 2, 1]
+                            },
+                            nt: {
+                                color: "#fff",
+                                backgroundColor: attackSourcesColor1[3],
+                                width: 13,
+                                height: 13,
+                                fontSize: 10,
+                                align: "center",
+                                lineHeight: 3,
+                                borderRadius: 100,
+                                padding: [0, 1, 2, 1],
+                                lineHeight: 5
+                            }
+                        },
+                        formatter: function(value, index) {
+                            index = contains(attaName, value) + 1;
+                            if (index - 1 < 3) {
+                                return ["{nt" + index + "|" + index + "}"].join("\n");
+                            } else {
+                                return ["{nt|" + index + "}"].join("\n");
+                            }
+                        }
+                    }
+                }, {
+                    type: "category",
+                    inverse: true,
+                    axisTick: "none",
+                    axisLine: "none",
+                    show: true,
+                    axisLabel: {
+                        textStyle: {
+                            color: "#fff",
+                            fontSize: "10"
+                        }
+                    },
+                    data: attackSourcesDataFmt(attaName)
+                }, { //名称
+                    type: 'category',
+                    offset: -10,
+                    position: "left",
+                    axisLabel: {
+                        color: `#fff`,
+                        fontSize: 10
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    inverse: false,
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        color: ["#fff"],
+                        align: "left",
+                        verticalAlign: "bottom",
+                        lineHeight: 30,
+                        fontSize: 8
+                    },
+                    data: topName.stock
+                }, ],
+                series: [{
+                    zlevel: 1,
+                    type: "bar",
+                    barWidth: "10px",
+                    animationDuration: 1500,
+                    data: attackSourcesDataFmt(attaData),
+                    align: "center",
+                    itemStyle: {
+                        normal: {
+                            barBorderRadius: 10
+                        }
+                    },
+                    label: {
+                        show: true,
+                        fontSize: 10,
+                        color: "#fff",
+                        textBorderWidth: 2,
+                        padding: [2, 0, 0, 0]
+                    }
+                }, {
+                    type: "bar",
+                    barWidth: 10,
+                    barGap: "-100%",
+                    margin: "20",
+                    data: salvProMax,
+                    textStyle: {
+                        //图例文字的样式
+                        fontSize: 10,
+                        color: "#fff"
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: "#05325F",
+                            //width:"100%",
+                            fontSize: 10,
+                            barBorderRadius: 30
+                        },
+                    }
+                }]
+            };
+            // 把配置给实例对象
+            myChart.setOption(option);
+        })
+        window.addEventListener("resize", function() {
+            myChart.resize();
+        });
+    })();
+    // 人气推荐
+    (function() {
+        var myChart = echarts.init(document.querySelector('.line .chart'));
+        axios.get('http://localhost:8081/clouddata').then(res => {
+            var adata = new Array()
+            adata = res.data
+            const originData = [];
+            const data = originData.map(val => ({
+                ...val,
+                textStyle: {
+                    normal: {
+                        color: randomColor()
+                    }
+                }
+            }));
+
+            myChart.setOption({
+                series: [{
+                    type: 'wordCloud',
+                    shape: 'circle',
+                    left: 'center',
+                    top: 'center',
+                    width: '70%',
+                    height: '80%',
+                    right: null,
+                    bottom: null,
+                    sizeRange: [12, 60],
+                    rotationRange: [0, 0], //字符横向
+                    rotationStep: 45,
+                    gridSize: 8,
+                    drawOutOfBound: false,
+                    textStyle: {
+                        normal: {
+                            fontFamily: 'sans-serif',
+                            fontWeight: 'normal'
+                        },
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowColor: 'white'
+                        }
+                    },
+                    data: [{
+                        name: adata[0][0],
+                        value: adata[0][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[1][0],
+                        value: adata[1][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[2][0],
+                        value: adata[2][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[3][0],
+                        value: adata[3][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[4][0],
+                        value: adata[4][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[5][0],
+                        value: adata[5][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[6][0],
+                        value: adata[6][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[7][0],
+                        value: adata[7][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[8][0],
+                        value: adata[8][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[9][0],
+                        value: adata[9][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[10][0],
+                        value: adata[10][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[11][0],
+                        value: adata[11][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[12][0],
+                        value: adata[12][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[13][0],
+                        value: adata[13][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[14][0],
+                        value: adata[14][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[15][0],
+                        value: adata[15][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[16][0],
+                        value: adata[16][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }, {
+                        name: adata[17][0],
+                        value: adata[17][1],
+                        textStyle: {
+                            normal: {
+                                color: randomColor()
+                            }
+                        }
+                    }]
+                }]
+            });
+
+            function randomColor() {
+                return 'rgb(' + [
+                    Math.round(Math.random() * 200),
+                    Math.round(Math.random() * 200),
+                    Math.round(Math.random() * 200)
+                ].join(',') + ')';
+            }
+        })
+        window.addEventListener("resize", function() {
+            myChart.resize();
+        });
+    })();
+    //饼图 今天吃什么
+    (function() {
+        // 基于准备好的dom，初始化echarts实例
+        var total = 0
+        var myChart = echarts.init(document.querySelector(".pie .chart"));
+        data = [{
+            value: 1,
+            name: "小米饭"
+        }, {
+            value: 4,
+            name: "包子"
+        }, {
+            value: 2,
+            name: "回锅肉"
+        }, {
+            value: 2,
+            name: "清蒸鸡"
+        }, {
+            value: 1,
+            name: "烤鱼"
+        }]
+        console.log(total)
+        data.forEach((res) => {
+            total += res.value
+        })
+        option = {
+            tooltip: {
+                trigger: "item",
+                formatter: "{a} <br/>{b}: {c} ({d}%)",
+                position: function(p) {
+                    //其中p为当前鼠标的位置
+                    return [p[0] + 10, p[1] - 10];
+                }
+            },
+            legend: {
+                top: "90%",
+                itemWidth: 10,
+                itemHeight: 10,
+                data: ["小米饭", "包子", "回锅肉", "清蒸鸡", "烤鱼"],
+                textStyle: {
+                    color: "rgba(255,255,255,.5)",
+                    fontSize: "12"
+                }
+            },
+            toolbar: {
+                show: true,
+                formatter: '{b} </br> {c}人 </br> 占比{d}%'
+            },
+            graphic: {
+                type: 'text', // [ default: image ]用 setOption 首次设定图形元素时必须指定。image, text, circle, sector, ring, polygon, polyline, rect, line, bezierCurve, arc, group,
+                top: '40%', // 描述怎么根据父元素进行定位。top 和 bottom 只有一个可以生效。如果指定 top 或 bottom，则 shape 里的 y、cy 等定位属性不再生效。『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 group 的子元素，父元素就是 group 元素。
+                left: 'center',
+                style: {
+                    text: total, // 文本块文字。可以使用 \n 来换行。[ default: '' ]
+                    fill: '#fff', // 填充色。
+                    fontSize: 17,
+                    fontWeight: 'bold' // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
+                }
+            },
+            series: [{
+                name: "吃什么",
+                type: "pie",
+                center: ["50%", "42%"],
+                radius: ["40%", "60%"],
+                color: [
+                    "#5470c6",
+                    "#91cc75",
+                    "#fac858",
+                    "#ee6666",
+                    "#73c0de",
+                    "#3ba272",
+                    "#fc8452",
+                    "#9a60b4",
+                    "#ea7ccc"
+                ],
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'outside',
+                        formatter: '{b}' + '-' + '{d}%',
+                        function() {
+                            return total
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: true,
+                        length: 6
+                    }
+                },
+                data: data
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        window.addEventListener("resize", function() {
+            myChart.resize();
+        });
+    })();
+
+    //今日Top
+    (function() {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.querySelector(".bar1 .chart"));
+        var data = [70, 34, 60, 78, 69];
+        var titlename = ["HTML5", "CSS3", "javascript", "VUE", "NODE"];
+        var valdata = [702, 350, 610, 793, 664];
+        var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
+        option = {
+            //图标位置
+            grid: {
+                top: "10%",
+                left: "22%",
+                bottom: "10%"
+            },
+            xAxis: {
+                show: false
+            },
+            yAxis: [{
+                show: true,
+                data: titlename,
+                inverse: true,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    color: "#fff",
+
+                    rich: {
+                        lg: {
+                            color: "#fff",
+                            borderRadius: 15,
+                            // padding: 5,
+                            align: "center",
+                            width: 15,
+                            height: 15
+                        }
+                    }
+                }
+            }, {
+                show: true,
+                inverse: true,
+                data: valdata,
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 12,
+                        color: "#fff"
+                    }
+                }
+            }],
+            series: [{
+                name: "条",
+                type: "bar",
+                yAxisIndex: 0,
+                data: data,
+                barCategoryGap: 50,
+                barWidth: 10,
+                itemStyle: {
+                    normal: {
+                        barBorderRadius: 20,
+                        color: function(params) {
+                            var num = myColor.length;
+                            return myColor[params.dataIndex % num];
+                        }
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: "inside",
+                        formatter: "{c}%"
+                    }
+                }
+            }, {
+                name: "框",
+                type: "bar",
+                yAxisIndex: 1,
+                barCategoryGap: 50,
+                data: [100, 100, 100, 100, 100],
+                barWidth: 15,
+                itemStyle: {
+                    normal: {
+                        color: "none",
+                        borderColor: "#00c1de",
+                        borderWidth: 3,
+                        barBorderRadius: 15
+                    }
+                }
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        window.addEventListener("resize", function() {
+            myChart.resize();
+        });
+    })();
+    // 折线图 优秀作品
+    // 点位分布统计模块
+    (function() {
+        // 1. 实例化对象
+        var myChart = echarts.init(document.querySelector(".pie1  .chart"));
+        // 2. 指定配置项和数据
+        var option = {
+            legend: {
+                top: "90%",
+                itemWidth: 10,
+                itemHeight: 10,
+                textStyle: {
+                    color: "rgba(255,255,255,.5)",
+                    fontSize: "12"
+                }
+            },
+            tooltip: {
+                trigger: "item",
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            // 注意颜色写的位置
+            color: [
+                "#006cff",
+                "#60cda0",
+                "#ed8884",
+                "#ff9f7f",
+                "#0096ff",
+                "#9fe6b8",
+                "#32c5e9",
+                "#1d9dff"
+            ],
+            series: [{
+                name: "点位统计",
+                type: "pie",
+                // 如果radius是百分比则必须加引号
+                radius: ["10%", "70%"],
+                center: ["50%", "42%"],
+                roseType: "radius",
+                data: [{
+                    value: 20,
+                    name: "云南"
+                }, {
+                    value: 26,
+                    name: "北京"
+                }, {
+                    value: 24,
+                    name: "山东"
+                }, {
+                    value: 25,
+                    name: "河北"
+                }, {
+                    value: 20,
+                    name: "江苏"
+                }, {
+                    value: 25,
+                    name: "浙江"
+                }, {
+                    value: 30,
+                    name: "深圳"
+                }, {
+                    value: 42,
+                    name: "广东"
+                }],
+                // 修饰饼形图文字相关的样式 label对象
+                label: {
+                    fontSize: 10
+                },
+                // 修饰引导线样式
+                labelLine: {
+                    // 连接到图形的线长度
+                    length: 10,
+                    // 连接到文字的线长度
+                    length2: 10
+                }
+            }]
+        };
+
+        // 3. 配置项和数据给我们的实例化对象
+        myChart.setOption(option);
+        // 4. 当我们浏览器缩放的时候，图表也等比例缩放
+        window.addEventListener("resize", function() {
+            // 让我们的图表调用 resize这个方法
+            myChart.resize();
+        });
+    })();
 </script>
 
 </html>

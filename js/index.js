@@ -1,6 +1,7 @@
-// 已售出
 (function() {
-    // 实例化对象
+    axios.get('http://localhost:8081/getall').then(res => {
+        console.log(res);
+    })
     var myChart = echarts.init(document.querySelector(".bar .chart"));
     //数据
     let data = [
