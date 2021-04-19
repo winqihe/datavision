@@ -41,12 +41,13 @@
         justify-content: space-around;
         align-items: center;
         margin: 0 0 0 135px;
+        border-radius: 8%;
     }
     
     .weather-box>.data {
         width: 2.19rem;
         height: 0.65rem;
-        border-right: 2px solid #cdddf7;
+        border-right: 2px solid rgb(129, 175, 255);
     }
     
     .data>p {
@@ -146,6 +147,20 @@
         color: #cdddf7;
         padding-left: 10px;
     }
+    
+    .add {
+        float: left;
+        margin: 5px 10px 10px 20px;
+        font-size: 14px;
+        line-height: 2.0vw;
+    }
+    
+    .less {
+        float: right;
+        margin: 5px 20px 10px 10px;
+        font-size: 14px;
+        line-height: 2.0vw;
+    }
 </style>
 
 <body>
@@ -199,11 +214,29 @@
                 <div class="panel-footer"></div>
             </div>
             <div class="panel pie">
-                <h2>今天吃什么</h2>
-                <!--饼图，按照百分比来进行展示今天一些菜点的趋势-->
-                <div class="chart"></div>
-                <div class="panel-footer"></div>
+                <h2>增重or减肥</h2>
+                <!--按照一定的菜谱来为用户进行增重or减肥-->
+                <div class="box">
+                    <div class="add">
+                        <div>{{daname1}}</div>
+                        <div>{{daname2}}</div>
+                        <div>{{daname3}}</div>
+                        <div>{{daname4}}</div>
+                        <div>{{daname5}}</div>
+                        <div>{{daname6}}</div>
+                    </div>
+                    <div class="less">
+                        <div>{{daname7}}</div>
+                        <div>{{daname8}}</div>
+                        <div>{{daname9}}</div>
+                        <div>{{daname10}}</div>
+                        <div>{{daname11}}</div>
+                        <div>{{daname12}}</div>
+                    </div>
+                </div>
             </div>
+            <div class="panel-footer"></div>
+        </div>
         </div>
         <div class="column">
             <div class="no">
@@ -230,13 +263,16 @@
             <div class="map">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="./images/img.jpg" alt="" width="600px" height="450px">
+                        <img src="./images/img.jpg" alt="" width="600px" height="480px">
                     </div>
                     <div class="swiper-slide">
-                        <img src="./images/img3.jpg" alt="" width="600px" height="450px">
+                        <img src="./images/img2.jpg" alt="" width="600px" height="480px">
                     </div>
                     <div class="swiper-slide">
-                        <img src="./images/img4.jpg" alt="" width="600px" height="450px">
+                        <img src="./images/img3.jpg" alt="" width="600px" height="480px">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/img4.jpg" alt="" width="600px" height="480px">
                     </div>
                 </div>
                 <!-- Add Pagination -->
@@ -339,7 +375,30 @@
 
 
 <!--category数据-->
+<!--文本数据-->>
 <script>
+    axios.get("http://localhost:8081/mesdata").then(res => {
+        var mesdata = new Array()
+        mesdata = res.data
+        console.log(res.data[0]);
+        new Vue({
+            el: '.box',
+            data: {
+                daname1: res.data[0],
+                daname2: res.data[1],
+                daname3: res.data[2],
+                daname4: res.data[3],
+                daname5: res.data[4],
+                daname6: res.data[6],
+                daname7: res.data[5],
+                daname8: res.data[8],
+                daname9: res.data[7],
+                daname10: res.data[9],
+                daname11: res.data[10],
+                daname12: res.data[11],
+            },
+        })
+    })
     axios.get("http://localhost:8081/categorydata").then(res => {
         var categorydata = new Array()
         categorydata = res.data
@@ -893,106 +952,107 @@
             myChart.resize();
         });
     })();
+
     //饼图 今天吃什么
-    (function() {
-        // 基于准备好的dom，初始化echarts实例
-        var total = 0
-        var myChart = echarts.init(document.querySelector(".pie .chart"));
-        data = [{
-            value: 1,
-            name: "小米饭"
-        }, {
-            value: 4,
-            name: "包子"
-        }, {
-            value: 2,
-            name: "回锅肉"
-        }, {
-            value: 2,
-            name: "清蒸鸡"
-        }, {
-            value: 1,
-            name: "烤鱼"
-        }]
-        console.log(total)
-        data.forEach((res) => {
-            total += res.value
-        })
-        option = {
-            tooltip: {
-                trigger: "item",
-                formatter: "{a} <br/>{b}: {c} ({d}%)",
-                position: function(p) {
-                    //其中p为当前鼠标的位置
-                    return [p[0] + 10, p[1] - 10];
-                }
-            },
-            legend: {
-                top: "90%",
-                itemWidth: 10,
-                itemHeight: 10,
-                data: ["小米饭", "包子", "回锅肉", "清蒸鸡", "烤鱼"],
-                textStyle: {
-                    color: "rgba(255,255,255,.5)",
-                    fontSize: "12"
-                }
-            },
-            toolbar: {
-                show: true,
-                formatter: '{b} </br> {c}人 </br> 占比{d}%'
-            },
-            graphic: {
-                type: 'text', // [ default: image ]用 setOption 首次设定图形元素时必须指定。image, text, circle, sector, ring, polygon, polyline, rect, line, bezierCurve, arc, group,
-                top: '40%', // 描述怎么根据父元素进行定位。top 和 bottom 只有一个可以生效。如果指定 top 或 bottom，则 shape 里的 y、cy 等定位属性不再生效。『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 group 的子元素，父元素就是 group 元素。
-                left: 'center',
-                style: {
-                    text: total, // 文本块文字。可以使用 \n 来换行。[ default: '' ]
-                    fill: '#fff', // 填充色。
-                    fontSize: 17,
-                    fontWeight: 'bold' // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
-                }
-            },
-            series: [{
-                name: "吃什么",
-                type: "pie",
-                center: ["50%", "42%"],
-                radius: ["40%", "60%"],
-                color: [
-                    "#5470c6",
-                    "#91cc75",
-                    "#fac858",
-                    "#ee6666",
-                    "#73c0de",
-                    "#3ba272",
-                    "#fc8452",
-                    "#9a60b4",
-                    "#ea7ccc"
-                ],
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'outside',
-                        formatter: '{b}' + '-' + '{d}%',
-                        function() {
-                            return total
-                        }
-                    }
-                },
-                labelLine: {
-                    normal: {
-                        show: true,
-                        length: 6
-                    }
-                },
-                data: data
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        window.addEventListener("resize", function() {
-            myChart.resize();
-        });
-    })();
+    // (function() {
+    //     // 基于准备好的dom，初始化echarts实例
+    //     var total = 0
+    //     var myChart = echarts.init(document.querySelector(".pie .chart"));
+    //     data = [{
+    //         value: 1,
+    //         name: "小米饭"
+    //     }, {
+    //         value: 4,
+    //         name: "包子"
+    //     }, {
+    //         value: 2,
+    //         name: "回锅肉"
+    //     }, {
+    //         value: 2,
+    //         name: "清蒸鸡"
+    //     }, {
+    //         value: 1,
+    //         name: "烤鱼"
+    //     }]
+    //     console.log(total)
+    //     data.forEach((res) => {
+    //         total += res.value
+    //     })
+    //     option = {
+    //         tooltip: {
+    //             trigger: "item",
+    //             formatter: "{a} <br/>{b}: {c} ({d}%)",
+    //             position: function(p) {
+    //                 //其中p为当前鼠标的位置
+    //                 return [p[0] + 10, p[1] - 10];
+    //             }
+    //         },
+    //         legend: {
+    //             top: "90%",
+    //             itemWidth: 10,
+    //             itemHeight: 10,
+    //             data: ["小米饭", "包子", "回锅肉", "清蒸鸡", "烤鱼"],
+    //             textStyle: {
+    //                 color: "rgba(255,255,255,.5)",
+    //                 fontSize: "12"
+    //             }
+    //         },
+    //         toolbar: {
+    //             show: true,
+    //             formatter: '{b} </br> {c}人 </br> 占比{d}%'
+    //         },
+    //         graphic: {
+    //             type: 'text', // [ default: image ]用 setOption 首次设定图形元素时必须指定。image, text, circle, sector, ring, polygon, polyline, rect, line, bezierCurve, arc, group,
+    //             top: '40%', // 描述怎么根据父元素进行定位。top 和 bottom 只有一个可以生效。如果指定 top 或 bottom，则 shape 里的 y、cy 等定位属性不再生效。『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 group 的子元素，父元素就是 group 元素。
+    //             left: 'center',
+    //             style: {
+    //                 text: total, // 文本块文字。可以使用 \n 来换行。[ default: '' ]
+    //                 fill: '#fff', // 填充色。
+    //                 fontSize: 17,
+    //                 fontWeight: 'bold' // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
+    //             }
+    //         },
+    //         series: [{
+    //             name: "吃什么",
+    //             type: "pie",
+    //             center: ["50%", "42%"],
+    //             radius: ["40%", "60%"],
+    //             color: [
+    //                 "#5470c6",
+    //                 "#91cc75",
+    //                 "#fac858",
+    //                 "#ee6666",
+    //                 "#73c0de",
+    //                 "#3ba272",
+    //                 "#fc8452",
+    //                 "#9a60b4",
+    //                 "#ea7ccc"
+    //             ],
+    //             label: {
+    //                 normal: {
+    //                     show: true,
+    //                     position: 'outside',
+    //                     formatter: '{b}' + '-' + '{d}%',
+    //                     function() {
+    //                         return total
+    //                     }
+    //                 }
+    //             },
+    //             labelLine: {
+    //                 normal: {
+    //                     show: true,
+    //                     length: 6
+    //                 }
+    //             },
+    //             data: data
+    //         }]
+    //     };
+    //     // 使用刚指定的配置项和数据显示图表。
+    //     myChart.setOption(option);
+    //     window.addEventListener("resize", function() {
+    //         myChart.resize();
+    //     });
+    // })();
 
     //今日Top
     (function() {

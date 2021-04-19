@@ -239,7 +239,6 @@ header .showTime {
     transform: translate(-50%, -50%);
     width: 6.475rem;
     height: 6.475rem;
-    background: url(../images/map.png) no-repeat;
     background-size: 100% 100%;
     opacity: 0.3;
 }
@@ -247,7 +246,6 @@ header .showTime {
 .map .map2 {
     width: 8.0375rem;
     height: 8.0375rem;
-    background-image: url(../images/lbx.png);
     opacity: 0.6;
     animation: rotate 15s linear infinite;
     z-index: 2;
