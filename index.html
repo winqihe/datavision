@@ -153,6 +153,7 @@
         margin: 5px 10px 10px 20px;
         font-size: 14px;
         line-height: 2.0vw;
+        color: yellow;
     }
     
     .less {
@@ -160,12 +161,13 @@
         margin: 5px 20px 10px 10px;
         font-size: 14px;
         line-height: 2.0vw;
+        color: blue;
     }
 </style>
 
 <body>
     <header>
-        <h1>工学院餐饮</h1>
+        <h1>餐饮可视化</h1>
         <div class="showTime">NowTime：2020年3月17-0时54分14秒</div>
         <script>
             var t = null;
@@ -214,7 +216,7 @@
                 <div class="panel-footer"></div>
             </div>
             <div class="panel pie">
-                <h2>增重or减肥</h2>
+                <h2>增重|减肥</h2>
                 <!--按照一定的菜谱来为用户进行增重or减肥-->
                 <div class="box">
                     <div class="add">
@@ -1162,79 +1164,126 @@
         // 1. 实例化对象
         var myChart = echarts.init(document.querySelector(".pie1  .chart"));
         // 2. 指定配置项和数据
-        var option = {
-            legend: {
-                top: "90%",
-                itemWidth: 10,
-                itemHeight: 10,
-                textStyle: {
-                    color: "rgba(255,255,255,.5)",
-                    fontSize: "12"
-                }
-            },
-            tooltip: {
-                trigger: "item",
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            // 注意颜色写的位置
-            color: [
-                "#006cff",
-                "#60cda0",
-                "#ed8884",
-                "#ff9f7f",
-                "#0096ff",
-                "#9fe6b8",
-                "#32c5e9",
-                "#1d9dff"
-            ],
-            series: [{
-                name: "点位统计",
-                type: "pie",
-                // 如果radius是百分比则必须加引号
-                radius: ["10%", "70%"],
-                center: ["50%", "42%"],
-                roseType: "radius",
-                data: [{
-                    value: 20,
-                    name: "云南"
-                }, {
-                    value: 26,
-                    name: "北京"
-                }, {
-                    value: 24,
-                    name: "山东"
-                }, {
-                    value: 25,
-                    name: "河北"
-                }, {
-                    value: 20,
-                    name: "江苏"
-                }, {
-                    value: 25,
-                    name: "浙江"
-                }, {
-                    value: 30,
-                    name: "深圳"
-                }, {
-                    value: 42,
-                    name: "广东"
-                }],
-                // 修饰饼形图文字相关的样式 label对象
-                label: {
-                    fontSize: 10
-                },
-                // 修饰引导线样式
-                labelLine: {
-                    // 连接到图形的线长度
-                    length: 10,
-                    // 连接到文字的线长度
-                    length2: 10
-                }
-            }]
-        };
+        axios.get("http://localhost:8081/healthdata").then(res => {
+            var data = new Array()
+            data = res.data
+            var dataname = ['空气细菌总数', 'PM2.5', '一氧化碳', 'PM10', '空气温度', '二氧化碳', '甲醛']
+            var datamax = [20, 20, 20, 20, 20, 20, 20]
+            var datavaule = [11, 12, 8, 10, 18, 16, 6]
 
-        // 3. 配置项和数据给我们的实例化对象
-        myChart.setOption(option);
+            var indicator = []
+            for (var i = 0; i < dataname.length; i++) {
+                indicator.push({
+                    name: dataname[i],
+                    max: datamax[i],
+                })
+            }
+
+            function contains(arrays, obj) {
+                var i = arrays.length;
+                while (i--) {
+                    if (arrays[i] === obj) {
+                        return i;
+                    }
+                }
+                return false;
+            }
+
+            option = {
+                tooltip: {
+                    show: false,
+                    trigger: "item",
+                },
+                radar: {
+                    center: ["50%", "50%"],
+                    radius: "70%",
+                    startAngle: 240,
+                    splitNumber: 5,
+                    splitArea: {
+                        areaStyle: {
+                            color: [
+                                'rgba(0,96,208, 0.1)', 'rgba(0,96,208, 0.2)',
+                                'rgba(0,96,208, 0.4)', 'rgba(0,96,208, 0.6)',
+                                'rgba(0,96,208, 0.8)', 'rgba(0,96,208, 1)'
+                            ].reverse()
+                        }
+                    },
+                    axisLabel: {
+                        show: false,
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: "transparent"
+                        }
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: "transparent"
+                        }
+                    },
+                    name: {
+                        formatter: function(value) {
+                            var i = contains(dataname, value);
+                            var percent = datavaule[i];
+                            var ret = ""; //拼接加\n返回的类目项  
+                            var maxLength = 6; //每项显示文字个数  
+                            var valLength = value.length; //X轴类目项的文字个数  
+                            var rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数  
+                            if (rowN > 1) //如果类目项的文字大于6,
+                            {
+                                var temp = ""; //每次截取的字符串  
+                                var start = 0; //开始截取的位置  
+                                var end = maxLength; //结束截取的位置  
+                                temp = value.substring(start, end) + '\n' + value.substring(end, valLength)
+                                ret += temp; //凭借最终的字符串  
+                                return '{a|' + percent + '}\n' + '{b|' + ret + '}'
+                            } else {
+                                return '{a|' + percent + '}\n' + '{b|' + value + '}'
+                            }
+                        },
+                        textStyle: {
+                            rich: {
+                                b: {
+                                    color: '#CAEEFF',
+                                    fontSize: 11,
+                                    padding: [0, 0],
+                                    lineHeight: 10,
+                                }
+                            },
+                        },
+                    },
+                    indicator: indicator
+                },
+
+                series: [{
+                    type: "radar",
+                    symbol: "circle",
+                    symbolSize: 7,
+                    areaStyle: {
+                        normal: {
+                            color: 'rgba(170, 216, 255, 0)',
+                        }
+                    },
+                    itemStyle: {
+                        color: '#84E1FF',
+                        borderColor: '#00A7FE',
+                        borderWidth: 1,
+                    },
+                    lineStyle: {
+                        normal: {
+                            color: "#00A7FE",
+                            width: 1.5
+                        }
+                    },
+                    data: [datavaule]
+                }]
+            };
+            // 3. 配置项和数据给我们的实例化对象
+            myChart.setOption(option);
+        })
+
         // 4. 当我们浏览器缩放的时候，图表也等比例缩放
         window.addEventListener("resize", function() {
             // 让我们的图表调用 resize这个方法
