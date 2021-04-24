@@ -5,8 +5,7 @@
 
 首先创建相应的数据库，并创建表，表的数据文件放在了后端代码中。
 
-![image-20210419230121835](C:\Users\winqihe\AppData\Roaming\Typora\typora-user-images\image-20210419230121835.png)
-
+https://z3.ax1x.com/2021/04/24/cvAlMn.png
 之后修改后端的application.properties.
 
 记得修改数据库的名字以及密码和你的要对应。
