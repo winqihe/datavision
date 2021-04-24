@@ -10,8 +10,7 @@
 
 记得修改数据库的名字以及密码和你的要对应。
 
-![image-20210419230202575](C:\Users\winqihe\AppData\Roaming\Typora\typora-user-images\image-20210419230202575.png)
-
+[![cvA1rq.png](https://z3.ax1x.com/2021/04/24/cvA1rq.png)](https://imgtu.com/i/cvA1rq)
 ```xml
 server.port=8081
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
