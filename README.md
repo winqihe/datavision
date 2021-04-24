@@ -5,7 +5,7 @@
 
 首先创建相应的数据库，并创建表，表的数据文件放在了后端代码中。
 
-https://z3.ax1x.com/2021/04/24/cvAlMn.png
+[![cvAlMn.png](https://z3.ax1x.com/2021/04/24/cvAlMn.png)](https://imgtu.com/i/cvAlMn)
 之后修改后端的application.properties.
 
 记得修改数据库的名字以及密码和你的要对应。
