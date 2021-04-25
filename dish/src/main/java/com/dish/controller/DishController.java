@@ -24,4 +24,12 @@ public class DishController {
     public List categorydata(){
         return dishDao.categorydata();
     }
+    @RequestMapping("/mesdata")
+    public List mesdata(){
+        return dishDao.mesdata();
+    }
+    @RequestMapping("/waittime")
+    public List waittime(){
+        return dishDao.waittime();
+    }
 }

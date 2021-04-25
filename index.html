@@ -153,7 +153,7 @@
         margin: 5px 10px 10px 20px;
         font-size: 14px;
         line-height: 2.0vw;
-        color: yellow;
+        color: #fa709a;
     }
     
     .less {
@@ -161,7 +161,14 @@
         margin: 5px 20px 10px 10px;
         font-size: 14px;
         line-height: 2.0vw;
-        color: blue;
+        color: #2af598;
+    }
+    
+    .waittime {
+        color: #f78ca0;
+        margin: 20px 20px 20px 20px;
+        line-height: 2.2vw;
+        font-size: 14px;
     }
 </style>
 
@@ -284,7 +291,14 @@
         </div>
         <div class="column">
             <div class="panel bar1">
-                <h2>等待时间</h2>
+                <div class="waittime">
+                    <p class="wait1"></p>
+                    <p class="wait2"></p>
+                    <p class="wait3"></p>
+                    <p class="wait4"></p>
+                    <p class="wait5"></p>
+                    <p class="wait6"></p>
+                </div>
                 <!--根据目前数据中购买最多的菜品进行展示-->
                 <div class="chart"></div>
                 <div class="panel-footer"></div>
@@ -374,8 +388,75 @@
         });
     </script>
 </body>
+<!--waitime-->
+<script>
+    window.onload = function() {
+        countDown();
 
+        function addZero(i) {
+            return i < 10 ? "0" + i : i + "";
+        }
 
+        function countDown() {
+            axios.get("http://localhost:8081/waittime").then((res) => {
+                console.log(res.data[1][1]);
+                var nowtime = new Date();
+                var endtime1 = new Date(res.data[0][1]);
+                var lefttime1 = parseInt((nowtime.getTime() - endtime1.getTime()) / 1000);
+                var m1 = parseInt(lefttime1 / 60 % 60);
+                var s1 = parseInt(lefttime1 % 60);
+                m1 = addZero(m1);
+                s1 = addZero(s1);
+                var endtime2 = new Date(res.data[1][1]);
+                var lefttime2 = parseInt((nowtime.getTime() - endtime2.getTime()) / 1000);
+                var m2 = parseInt(lefttime2 / 60 % 60);
+                var s2 = parseInt(lefttime2 % 60);
+                m2 = addZero(m2);
+                s2 = addZero(s2);
+                var endtime3 = new Date(res.data[2][1]);
+                var lefttime3 = parseInt((nowtime.getTime() - endtime3.getTime()) / 1000);
+                var m3 = parseInt(lefttime3 / 60 % 60);
+                var s3 = parseInt(lefttime3 % 60);
+                m3 = addZero(m3);
+                s3 = addZero(s3);
+                var endtime4 = new Date(res.data[4][1]);
+                var lefttime4 = parseInt((nowtime.getTime() - endtime4.getTime()) / 1000);
+                var m4 = parseInt(lefttime4 / 60 % 60);
+                var s4 = parseInt(lefttime4 % 60);
+                m4 = addZero(m4);
+                s4 = addZero(s4);
+                var endtime5 = new Date(res.data[5][1]);
+                var lefttime5 = parseInt((nowtime.getTime() - endtime5.getTime()) / 1000);
+                var m5 = parseInt(lefttime5 / 60 % 60);
+                var s5 = parseInt(lefttime5 % 60);
+                m5 = addZero(m5);
+                s5 = addZero(s5);
+                var endtime6 = new Date(res.data[6][1]);
+                var lefttime6 = parseInt((nowtime.getTime() - endtime6.getTime()) / 1000);
+                var m6 = parseInt(lefttime6 / 60 % 60);
+                var s6 = parseInt(lefttime6 % 60);
+                m6 = addZero(m6);
+                s6 = addZero(s6);
+                document.querySelector(".wait1").innerHTML = res.data[0][0] + "        |       " + `等待中 ${m1}分 ${s1}秒`;
+                document.querySelector(".wait2").innerHTML = res.data[1][0] + "        |       " + `等待中 ${m2}分 ${s2}秒`;
+                document.querySelector(".wait3").innerHTML = res.data[2][0] + "        |       " + `等待中 ${m3}分 ${s3}秒`;
+                document.querySelector(".wait4").innerHTML = res.data[3][0] + "        |       " + `等待中 ${m4}分 ${s4}秒`;
+                document.querySelector(".wait5").innerHTML = res.data[4][0] + "        |       " + `等待中 ${m5}分 ${s5}秒`;
+                document.querySelector(".wait6").innerHTML = res.data[5][0] + "        |       " + `等待中 ${m6}分 ${s6}秒`;
+                if (lefttime1 <= 0) {
+                    document.querySelector(".wait1").innerHTML = "成功上菜";
+                    document.querySelector(".wait2").innerHTML = "成功上菜";
+                    document.querySelector(".wait3").innerHTML = "成功上菜";
+                    document.querySelector(".wait4").innerHTML = "成功上菜";
+                    document.querySelector(".wait5").innerHTML = "成功上菜";
+                    document.querySelector(".wait6").innerHTML = "成功上菜";
+                    return;
+                }
+                setTimeout(countDown, 1000);
+            })
+        }
+    }
+</script>
 <!--category数据-->
 <!--文本数据-->>
 <script>
@@ -955,211 +1036,8 @@
         });
     })();
 
-    //饼图 今天吃什么
-    // (function() {
-    //     // 基于准备好的dom，初始化echarts实例
-    //     var total = 0
-    //     var myChart = echarts.init(document.querySelector(".pie .chart"));
-    //     data = [{
-    //         value: 1,
-    //         name: "小米饭"
-    //     }, {
-    //         value: 4,
-    //         name: "包子"
-    //     }, {
-    //         value: 2,
-    //         name: "回锅肉"
-    //     }, {
-    //         value: 2,
-    //         name: "清蒸鸡"
-    //     }, {
-    //         value: 1,
-    //         name: "烤鱼"
-    //     }]
-    //     console.log(total)
-    //     data.forEach((res) => {
-    //         total += res.value
-    //     })
-    //     option = {
-    //         tooltip: {
-    //             trigger: "item",
-    //             formatter: "{a} <br/>{b}: {c} ({d}%)",
-    //             position: function(p) {
-    //                 //其中p为当前鼠标的位置
-    //                 return [p[0] + 10, p[1] - 10];
-    //             }
-    //         },
-    //         legend: {
-    //             top: "90%",
-    //             itemWidth: 10,
-    //             itemHeight: 10,
-    //             data: ["小米饭", "包子", "回锅肉", "清蒸鸡", "烤鱼"],
-    //             textStyle: {
-    //                 color: "rgba(255,255,255,.5)",
-    //                 fontSize: "12"
-    //             }
-    //         },
-    //         toolbar: {
-    //             show: true,
-    //             formatter: '{b} </br> {c}人 </br> 占比{d}%'
-    //         },
-    //         graphic: {
-    //             type: 'text', // [ default: image ]用 setOption 首次设定图形元素时必须指定。image, text, circle, sector, ring, polygon, polyline, rect, line, bezierCurve, arc, group,
-    //             top: '40%', // 描述怎么根据父元素进行定位。top 和 bottom 只有一个可以生效。如果指定 top 或 bottom，则 shape 里的 y、cy 等定位属性不再生效。『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 group 的子元素，父元素就是 group 元素。
-    //             left: 'center',
-    //             style: {
-    //                 text: total, // 文本块文字。可以使用 \n 来换行。[ default: '' ]
-    //                 fill: '#fff', // 填充色。
-    //                 fontSize: 17,
-    //                 fontWeight: 'bold' // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
-    //             }
-    //         },
-    //         series: [{
-    //             name: "吃什么",
-    //             type: "pie",
-    //             center: ["50%", "42%"],
-    //             radius: ["40%", "60%"],
-    //             color: [
-    //                 "#5470c6",
-    //                 "#91cc75",
-    //                 "#fac858",
-    //                 "#ee6666",
-    //                 "#73c0de",
-    //                 "#3ba272",
-    //                 "#fc8452",
-    //                 "#9a60b4",
-    //                 "#ea7ccc"
-    //             ],
-    //             label: {
-    //                 normal: {
-    //                     show: true,
-    //                     position: 'outside',
-    //                     formatter: '{b}' + '-' + '{d}%',
-    //                     function() {
-    //                         return total
-    //                     }
-    //                 }
-    //             },
-    //             labelLine: {
-    //                 normal: {
-    //                     show: true,
-    //                     length: 6
-    //                 }
-    //             },
-    //             data: data
-    //         }]
-    //     };
-    //     // 使用刚指定的配置项和数据显示图表。
-    //     myChart.setOption(option);
-    //     window.addEventListener("resize", function() {
-    //         myChart.resize();
-    //     });
-    // })();
 
-    //今日Top
-    (function() {
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.querySelector(".bar1 .chart"));
-        var data = [70, 34, 60, 78, 69];
-        var titlename = ["HTML5", "CSS3", "javascript", "VUE", "NODE"];
-        var valdata = [702, 350, 610, 793, 664];
-        var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
-        option = {
-            //图标位置
-            grid: {
-                top: "10%",
-                left: "22%",
-                bottom: "10%"
-            },
-            xAxis: {
-                show: false
-            },
-            yAxis: [{
-                show: true,
-                data: titlename,
-                inverse: true,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisTick: {
-                    show: false
-                },
-                axisLabel: {
-                    color: "#fff",
 
-                    rich: {
-                        lg: {
-                            color: "#fff",
-                            borderRadius: 15,
-                            // padding: 5,
-                            align: "center",
-                            width: 15,
-                            height: 15
-                        }
-                    }
-                }
-            }, {
-                show: true,
-                inverse: true,
-                data: valdata,
-                axisLabel: {
-                    textStyle: {
-                        fontSize: 12,
-                        color: "#fff"
-                    }
-                }
-            }],
-            series: [{
-                name: "条",
-                type: "bar",
-                yAxisIndex: 0,
-                data: data,
-                barCategoryGap: 50,
-                barWidth: 10,
-                itemStyle: {
-                    normal: {
-                        barBorderRadius: 20,
-                        color: function(params) {
-                            var num = myColor.length;
-                            return myColor[params.dataIndex % num];
-                        }
-                    }
-                },
-                label: {
-                    normal: {
-                        show: true,
-                        position: "inside",
-                        formatter: "{c}%"
-                    }
-                }
-            }, {
-                name: "框",
-                type: "bar",
-                yAxisIndex: 1,
-                barCategoryGap: 50,
-                data: [100, 100, 100, 100, 100],
-                barWidth: 15,
-                itemStyle: {
-                    normal: {
-                        color: "none",
-                        borderColor: "#00c1de",
-                        borderWidth: 3,
-                        barBorderRadius: 15
-                    }
-                }
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        window.addEventListener("resize", function() {
-            myChart.resize();
-        });
-    })();
-    // 折线图 优秀作品
-    // 点位分布统计模块
     (function() {
         // 1. 实例化对象
         var myChart = echarts.init(document.querySelector(".pie1  .chart"));

@@ -13,4 +13,8 @@ public interface DishDao extends JpaRepository<Dish, Integer> {
     List clouddata();
     @Query(value = "select `name`,`category` from dish d",nativeQuery = true)
     List categorydata();
+    @Query(value = "select `name` from dish d",nativeQuery = true)
+    List mesdata();
+    @Query(value = "select `name`,`waittime` from dish d",nativeQuery = true)
+    List waittime();
 }
