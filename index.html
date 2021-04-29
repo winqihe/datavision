@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>工学院餐饮</title>
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="./css/swiper-bundle.min.css">
-</head>
 <style>
-    .sale {
+    /* .sale {
         font-size: 14px;
         line-height: 2.4vw;
         height: 1.4vw;
@@ -22,9 +12,67 @@
         height: 1.6vw;
         color: white;
     } */
-    
-    .saletime {
+    /* .saletime {
         float: right;
+    }
+    
+    #container {
+        margin: auto;
+        position: relative;
+        height: 150px;
+        overflow: hidden;
+    }
+    
+    #list-wrapper {
+        position: relative;
+    }
+    
+    ul {
+        list-style: none;
+        text-align: center;
+        padding: 0 20px;
+    }
+    
+    li {
+        line-height: 25px;
+        color: #fff;
+        font-size: 14px;
+        text-align: left;
+    } */
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>餐饮可视化</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+</head>
+<style>
+    #container {
+        margin: auto;
+        position: relative;
+        height: 150px;
+        overflow: hidden;
+    }
+    
+    #list-wrapper {
+        position: relative;
+    }
+    
+    ul {
+        list-style: none;
+        text-align: center;
+        padding: 0 20px;
+    }
+    
+    li {
+        line-height: 25px;
+        color: #fff;
+        font-size: 14px;
+        text-align: left;
     }
     
     .swiper-container {
@@ -59,7 +107,7 @@
     }
     
     .data>p>span {
-        margin: 0 5px;
+        margin: 0 4px;
     }
     
     .data>p.time {
@@ -166,15 +214,15 @@
     
     .waittime {
         color: #f78ca0;
-        margin: 20px 20px 20px 20px;
-        line-height: 2.2vw;
+        margin: 0px 20px 20px 20px;
+        line-height: 2.0vw;
         font-size: 14px;
     }
 </style>
 
 <body>
     <header>
-        <h1>餐饮可视化</h1>
+        <h1 style="font-size: 33px;">餐饮可视化</h1>
         <div class="showTime">NowTime：2020年3月17-0时54分14秒</div>
         <script>
             var t = null;
@@ -251,7 +299,8 @@
             <div class="no">
                 <div class="no-hd">
                     <ul>
-                        <li style="font-size:xx-large;">进店人数 ：1258</li>
+                        <li style="font-size: 30px;">进店人数</li>
+                        <li style="float: right;font-size: 40px;">1258</li>
                     </ul>
                 </div>
                 <div class="weather-box">
@@ -291,6 +340,7 @@
         </div>
         <div class="column">
             <div class="panel bar1">
+                <h2>等待时间</h2>
                 <div class="waittime">
                     <p class="wait1"></p>
                     <p class="wait2"></p>
@@ -305,39 +355,53 @@
             </div>
             <div class="panel line1">
                 <h2>你的口味</h2>
-                <div class="sale">
-                    <ul>
-                        <li>
-                            <div class="salelist">
-                                <div class="salename1">{{name1}}
-                                    <span class="saletime">{{category1}}</span> </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="salelist">
-                                <div class="salename2">{{name2}}
-                                    <span class="saletime">{{category2}}</span> </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="salelist">
-                                <div class="salename3">{{name3}}
-                                    <span class="saletime">{{category3}}</span> </div>
-                            </div>
-                            <div class="salelist">
-                                <div class="salename4">{{name4}}
-                                    <span class="saletime">{{category4}}</span> </div>
-                            </div>
-                            <div class="salelist">
-                                <div class="salename5">{{name5}}
-                                    <span class="saletime">{{category5}}</span> </div>
-                            </div>
-                            <div class="salelist">
-                                <div class="salename6">{{name6}}
-                                    <span class="saletime">{{category6}}</span> </div>
-                            </div>
-                        </li>
-                    </ul>
+                <div id="container">
+                    <div id="list-wrapper">
+                        <ul class="notice-list" id="notice-list">
+                            <li>
+                                <div class="salename1">
+                                </div>
+
+                            </li>
+                            <li>
+                                <div class="salename2">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="salename3">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="salename4">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="salename5">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="salename6">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="salename7">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="salename8">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="salename9">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="salename10">
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="notice-list" id="notice-list-2"></ul>
+                    </div>
                 </div>
                 <div class="panel-footer"></div>
             </div>
@@ -358,27 +422,30 @@
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script>
-        $(function() {
-            function apiFn() {
-                this.hostname = ""
+        var ROLL_SPEED = 100
+        var noticeList1 = $('#notice-list');
+        var noticeList2 = $('#notice-list-2');
+        var listWrapper = $('#list-wrapper');
+        noticeList2.html(noticeList1.html())
+        listWrapper.css('top', 0)
+        var timer = setInterval(rollStart, ROLL_SPEED);
+
+        function rollStart() {
+            if (Math.abs(_subStr(listWrapper.css('top'))) >= noticeList1.height()) {
+                listWrapper.css('top', 0)
+            } else {
+                var top = listWrapper.css('top');
+                listWrapper.css('top', _subStr(top) - 1)
             }
-            apiFn.prototype = {
-                Init: function() {
-                    this.policyFn()
-                },
-                policyFn: function() {
-                    $(".sale").jCarouselLite({
-                        vertical: true,
-                        hoverPause: true,
-                        visible: 4,
-                        auto: 1000,
-                        speed: 500
-                    });
-                },
+        }
+
+        // 截取px前数值
+        function _subStr(str) {
+            var index = str.indexOf('px');
+            if (index > -1) {
+                return parseFloat(str.substr(0, index + 1))
             }
-            var start = new apiFn()
-            start.Init()
-        })
+        }
         var swiper = new Swiper('.map', {
             pagination: {
                 el: '.swiper-pagination',
@@ -399,66 +466,65 @@
 
         function countDown() {
             axios.get("http://localhost:8081/waittime").then((res) => {
-                console.log(res.data[1][1]);
                 var nowtime = new Date();
                 var endtime1 = new Date(res.data[0][1]);
-                var lefttime1 = parseInt((nowtime.getTime() - endtime1.getTime()) / 1000);
+                var lefttime1 = parseInt((endtime1.getTime() - nowtime.getTime()) / 1000);
                 var m1 = parseInt(lefttime1 / 60 % 60);
                 var s1 = parseInt(lefttime1 % 60);
-                m1 = addZero(m1);
-                s1 = addZero(s1);
+                m1_ = addZero(m1);
+                s1_ = addZero(s1);
                 var endtime2 = new Date(res.data[1][1]);
-                var lefttime2 = parseInt((nowtime.getTime() - endtime2.getTime()) / 1000);
-                var m2 = parseInt(lefttime2 / 60 % 60);
-                var s2 = parseInt(lefttime2 % 60);
-                m2 = addZero(m2);
-                s2 = addZero(s2);
+                var lefttime2 = parseInt((endtime2.getTime() - nowtime.getTime()) / 1000);
+                var m2 = (parseInt(lefttime2 / 60 % 60) + m1);
+                var s2 = (parseInt(lefttime2 % 60) + s1) % 60;
+                m2_ = addZero(m2);
+                s2_ = addZero(s2);
                 var endtime3 = new Date(res.data[2][1]);
-                var lefttime3 = parseInt((nowtime.getTime() - endtime3.getTime()) / 1000);
-                var m3 = parseInt(lefttime3 / 60 % 60);
-                var s3 = parseInt(lefttime3 % 60);
-                m3 = addZero(m3);
-                s3 = addZero(s3);
+                var lefttime3 = parseInt((endtime3.getTime() - nowtime.getTime()) / 1000);
+                var m3 = (parseInt(lefttime3 / 60 % 60) + m1 + m2);
+                var s3 = (parseInt(lefttime3 % 60) + s1 + s2) % 60;
+                m3_ = addZero(m3);
+                s3_ = addZero(s3);
                 var endtime4 = new Date(res.data[4][1]);
-                var lefttime4 = parseInt((nowtime.getTime() - endtime4.getTime()) / 1000);
-                var m4 = parseInt(lefttime4 / 60 % 60);
-                var s4 = parseInt(lefttime4 % 60);
-                m4 = addZero(m4);
-                s4 = addZero(s4);
+                var lefttime4 = parseInt((endtime4.getTime() - nowtime.getTime()) / 1000);
+                var m4 = (parseInt(lefttime4 / 60 % 60) + m1 + m2 + m3);
+                var s4 = (parseInt(lefttime4 % 60) + s1 + s2 + s3) % 60;
+                m4_ = addZero(m4);
+                s4_ = addZero(s4);
                 var endtime5 = new Date(res.data[5][1]);
-                var lefttime5 = parseInt((nowtime.getTime() - endtime5.getTime()) / 1000);
-                var m5 = parseInt(lefttime5 / 60 % 60);
-                var s5 = parseInt(lefttime5 % 60);
-                m5 = addZero(m5);
-                s5 = addZero(s5);
+                var lefttime5 = parseInt((endtime5.getTime() - nowtime.getTime()) / 1000);
+                var m5 = (parseInt(lefttime5 / 60 % 60) + m1 + m2 + m3 + m4);
+                var s5 = (parseInt(lefttime5 % 60) + s1 + s2 + s3 + s4) % 60;
+                m5_ = addZero(m5);
+                s5_ = addZero(s5);
                 var endtime6 = new Date(res.data[6][1]);
-                var lefttime6 = parseInt((nowtime.getTime() - endtime6.getTime()) / 1000);
-                var m6 = parseInt(lefttime6 / 60 % 60);
-                var s6 = parseInt(lefttime6 % 60);
-                m6 = addZero(m6);
-                s6 = addZero(s6);
-                document.querySelector(".wait1").innerHTML = res.data[0][0] + "        |       " + `等待中 ${m1}分 ${s1}秒`;
-                document.querySelector(".wait2").innerHTML = res.data[1][0] + "        |       " + `等待中 ${m2}分 ${s2}秒`;
-                document.querySelector(".wait3").innerHTML = res.data[2][0] + "        |       " + `等待中 ${m3}分 ${s3}秒`;
-                document.querySelector(".wait4").innerHTML = res.data[3][0] + "        |       " + `等待中 ${m4}分 ${s4}秒`;
-                document.querySelector(".wait5").innerHTML = res.data[4][0] + "        |       " + `等待中 ${m5}分 ${s5}秒`;
-                document.querySelector(".wait6").innerHTML = res.data[5][0] + "        |       " + `等待中 ${m6}分 ${s6}秒`;
-                if (lefttime1 <= 0) {
-                    document.querySelector(".wait1").innerHTML = "成功上菜";
-                    document.querySelector(".wait2").innerHTML = "成功上菜";
-                    document.querySelector(".wait3").innerHTML = "成功上菜";
-                    document.querySelector(".wait4").innerHTML = "成功上菜";
-                    document.querySelector(".wait5").innerHTML = "成功上菜";
-                    document.querySelector(".wait6").innerHTML = "成功上菜";
-                    return;
-                }
+                var lefttime6 = parseInt((endtime6.getTime() - nowtime.getTime()) / 1000);
+                var m6 = (parseInt(lefttime6 / 60 % 60) + m1 + m2 + m3 + m4 + m5);
+                var s6 = (parseInt(lefttime6 % 60) + s1 + s2 + s3 + s4 + s5) % 60;
+                m6_ = addZero(m6);
+                s6_ = addZero(s6);
+                document.querySelector(".wait1").innerHTML = res.data[0][0] + "        |       " + `等待中 ${m1_}分 ${s1_}秒`;
+                document.querySelector(".wait2").innerHTML = res.data[1][0] + "        |       " + `等待中 ${m2_}分 ${s2_}秒`;
+                document.querySelector(".wait3").innerHTML = res.data[2][0] + "        |       " + `等待中 ${m3_}分 ${s3_}秒`;
+                document.querySelector(".wait4").innerHTML = res.data[3][0] + "        |       " + `等待中 ${m4_}分 ${s4_}秒`;
+                document.querySelector(".wait5").innerHTML = res.data[4][0] + "        |       " + `等待中 ${m5_}分 ${s5_}秒`;
+                document.querySelector(".wait6").innerHTML = res.data[5][0] + "        |       " + `等待中 ${m6_}分 ${s6_}秒`;
+                // if (lefttime1 <= 0) {
+                //     document.querySelector(".wait1").innerHTML = "成功上菜";
+                //     document.querySelector(".wait2").innerHTML = "成功上菜";
+                //     document.querySelector(".wait3").innerHTML = "成功上菜";
+                //     document.querySelector(".wait4").innerHTML = "成功上菜";
+                //     document.querySelector(".wait5").innerHTML = "成功上菜";
+                //     document.querySelector(".wait6").innerHTML = "成功上菜";
+                //     return;
+                // }
                 setTimeout(countDown, 1000);
             })
         }
     }
 </script>
 <!--category数据-->
-<!--文本数据-->>
+<!--文本数据-->
 <script>
     axios.get("http://localhost:8081/mesdata").then(res => {
         var mesdata = new Array()
@@ -485,24 +551,33 @@
     axios.get("http://localhost:8081/categorydata").then(res => {
         var categorydata = new Array()
         categorydata = res.data
-        console.log(categorydata)
-        new Vue({
-            el: '.sale',
-            data: {
-                name1: categorydata[0][0],
-                name2: categorydata[1][0],
-                name3: categorydata[2][0],
-                name4: categorydata[3][0],
-                name5: categorydata[4][0],
-                name6: categorydata[5][0],
-                category1: categorydata[0][1],
-                category2: categorydata[1][1],
-                category3: categorydata[2][1],
-                category4: categorydata[3][1],
-                category5: categorydata[4][1],
-                category6: categorydata[5][1]
-            },
-        })
+        document.querySelector(".salename1").innerHTML = categorydata[0][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[0][1];
+        document.querySelector(".salename2").innerHTML = categorydata[1][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[1][1];
+        document.querySelector(".salename3").innerHTML = categorydata[2][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[2][1];
+        document.querySelector(".salename4").innerHTML = categorydata[3][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[3][1];
+        document.querySelector(".salename5").innerHTML = categorydata[4][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[4][1];
+        document.querySelector(".salename6").innerHTML = categorydata[5][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[5][1];
+        document.querySelector(".salename7").innerHTML = categorydata[6][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[6][1];
+        document.querySelector(".salename8").innerHTML = categorydata[7][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[7][1];
+        document.querySelector(".salename9").innerHTML = categorydata[8][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[8][1];
+        document.querySelector(".salename10").innerHTML = categorydata[9][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[9][1];
+        // new Vue({
+        //     el: '#list-wrapper',
+        //     data: {
+        //         name1: categorydata[0][0],
+        //         name2: categorydata[1][0],
+        //         name3: categorydata[2][0],
+        //         name4: categorydata[3][0],
+        //         name5: categorydata[4][0],
+        //         name6: categorydata[5][0],
+        //         category1: categorydata[0][1],
+        //         category2: categorydata[1][1],
+        //         category3: categorydata[2][1],
+        //         category4: categorydata[3][1],
+        //         category5: categorydata[4][1],
+        //         category6: categorydata[5][1]
+        //     },
+        // })
     })
 </script>
 <script type="text/javascript">
