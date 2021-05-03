@@ -239,11 +239,12 @@
                 document.querySelector(".showTime").innerHTML =
                     "当前时间：" +
                     y +
-                    "年" +
+                    "/" +
                     mt +
-                    "月" +
+                    "/" +
                     day +
-                    "-" +
+                    "/" +
+                    ' ' +
                     h +
                     "时" +
                     m +
@@ -321,16 +322,22 @@
             <div class="map">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="./images/img.jpg" alt="" width="600px" height="480px">
+                        <img src="./images/1.jpg" alt="" width="600px" height="480px">
                     </div>
                     <div class="swiper-slide">
-                        <img src="./images/img2.jpg" alt="" width="600px" height="480px">
+                        <img src="./images/2.jpg" alt="" width="600px" height="480px">
                     </div>
                     <div class="swiper-slide">
-                        <img src="./images/img3.jpg" alt="" width="600px" height="480px">
+                        <img src="./images/3.jpg" alt="" width="600px" height="480px">
                     </div>
                     <div class="swiper-slide">
-                        <img src="./images/img4.jpg" alt="" width="600px" height="480px">
+                        <img src="./images/4.jpg" alt="" width="600px" height="480px">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/7.jpg" alt="" width="600px" height="480px">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/6.jpg" alt="" width="600px" height="480px">
                     </div>
                 </div>
                 <!-- Add Pagination -->
@@ -354,7 +361,7 @@
                 <div class="panel-footer"></div>
             </div>
             <div class="panel line1">
-                <h2>你的口味</h2>
+                <h2>推荐口味</h2>
                 <div id="container">
                     <div id="list-wrapper">
                         <ul class="notice-list" id="notice-list">
@@ -475,31 +482,31 @@
                 s1_ = addZero(s1);
                 var endtime2 = new Date(res.data[1][1]);
                 var lefttime2 = parseInt((endtime2.getTime() - nowtime.getTime()) / 1000);
-                var m2 = (parseInt(lefttime2 / 60 % 60) + m1);
+                var m2 = (parseInt(lefttime2 / 60 % 60));
                 var s2 = (parseInt(lefttime2 % 60) + s1) % 60;
                 m2_ = addZero(m2);
                 s2_ = addZero(s2);
                 var endtime3 = new Date(res.data[2][1]);
                 var lefttime3 = parseInt((endtime3.getTime() - nowtime.getTime()) / 1000);
-                var m3 = (parseInt(lefttime3 / 60 % 60) + m1 + m2);
+                var m3 = (parseInt(lefttime3 / 60 % 60) + m1);
                 var s3 = (parseInt(lefttime3 % 60) + s1 + s2) % 60;
                 m3_ = addZero(m3);
                 s3_ = addZero(s3);
                 var endtime4 = new Date(res.data[4][1]);
                 var lefttime4 = parseInt((endtime4.getTime() - nowtime.getTime()) / 1000);
-                var m4 = (parseInt(lefttime4 / 60 % 60) + m1 + m2 + m3);
+                var m4 = (parseInt(lefttime4 / 60 % 60) + m2);
                 var s4 = (parseInt(lefttime4 % 60) + s1 + s2 + s3) % 60;
                 m4_ = addZero(m4);
                 s4_ = addZero(s4);
                 var endtime5 = new Date(res.data[5][1]);
                 var lefttime5 = parseInt((endtime5.getTime() - nowtime.getTime()) / 1000);
-                var m5 = (parseInt(lefttime5 / 60 % 60) + m1 + m2 + m3 + m4);
+                var m5 = (parseInt(lefttime5 / 60 % 60) + m3);
                 var s5 = (parseInt(lefttime5 % 60) + s1 + s2 + s3 + s4) % 60;
                 m5_ = addZero(m5);
                 s5_ = addZero(s5);
                 var endtime6 = new Date(res.data[6][1]);
                 var lefttime6 = parseInt((endtime6.getTime() - nowtime.getTime()) / 1000);
-                var m6 = (parseInt(lefttime6 / 60 % 60) + m1 + m2 + m3 + m4 + m5);
+                var m6 = (parseInt(lefttime6 / 60 % 60) + m4);
                 var s6 = (parseInt(lefttime6 % 60) + s1 + s2 + s3 + s4 + s5) % 60;
                 m6_ = addZero(m6);
                 s6_ = addZero(s6);
@@ -529,22 +536,22 @@
     axios.get("http://localhost:8081/mesdata").then(res => {
         var mesdata = new Array()
         mesdata = res.data
-        console.log(res.data[0]);
+        console.log(res.data);
         new Vue({
             el: '.box',
             data: {
                 daname1: res.data[0],
                 daname2: res.data[1],
-                daname3: res.data[2],
-                daname4: res.data[3],
-                daname5: res.data[4],
-                daname6: res.data[6],
+                daname3: res.data[4],
+                daname4: res.data[8],
+                daname5: res.data[9],
+                daname6: res.data[16],
                 daname7: res.data[5],
-                daname8: res.data[8],
+                daname8: res.data[6],
                 daname9: res.data[7],
-                daname10: res.data[9],
-                daname11: res.data[10],
-                daname12: res.data[11],
+                daname10: res.data[18],
+                daname11: res.data[17],
+                daname12: res.data[19],
             },
         })
     })
@@ -553,14 +560,14 @@
         categorydata = res.data
         document.querySelector(".salename1").innerHTML = categorydata[0][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[0][1];
         document.querySelector(".salename2").innerHTML = categorydata[1][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[1][1];
-        document.querySelector(".salename3").innerHTML = categorydata[2][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[2][1];
+        document.querySelector(".salename3").innerHTML = categorydata[2][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[2][1];
         document.querySelector(".salename4").innerHTML = categorydata[3][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[3][1];
         document.querySelector(".salename5").innerHTML = categorydata[4][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[4][1];
         document.querySelector(".salename6").innerHTML = categorydata[5][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[5][1];
         document.querySelector(".salename7").innerHTML = categorydata[6][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[6][1];
-        document.querySelector(".salename8").innerHTML = categorydata[7][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[7][1];
+        document.querySelector(".salename8").innerHTML = categorydata[7][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[7][1];
         document.querySelector(".salename9").innerHTML = categorydata[8][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[8][1];
-        document.querySelector(".salename10").innerHTML = categorydata[9][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[9][1];
+        document.querySelector(".salename10").innerHTML = categorydata[9][0] + '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp' + categorydata[9][1];
         // new Vue({
         //     el: '#list-wrapper',
         //     data: {
@@ -593,6 +600,7 @@
         str >= 10 ? num = str : num = "0" + str;
         return num;
     }
+    var arr = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
     var timer = setInterval(function() {
         var date = new Date();
         var year = date.getFullYear(); //当前年份
@@ -601,12 +609,33 @@
         var hours = date.getHours(); //小时
         var minute = date.getMinutes(); //分
         var second = date.getSeconds(); //秒
-        var day = date.getDay(); //获取当前星期几 
+        var day = date.getDay() === 0 ? "周日 " : "周" + arr[date.getDay()] + " "; //获取当前星期几 
         var ampm = hours < 12 ? 'am' : 'pm';
         $('#time').html(fnW(hours) + ":" + fnW(minute) + ":" + fnW(second));
-        $('#date').html('<span>' + year + '/' + (month + 1) + '/' + data + '</span><span>' + ampm + '</span><span>周' + day + '</span>')
+        $('#date').html('<span>' + year + '/' + (month + 1) + '/' + data + '</span><span>' + ampm + '</span><span>' + day + '</span>')
 
     }, 1000)
+
+    function getYearCN(num) {
+        var str = num.toString();
+        var str1 = "";
+        for (var i = 0; i < str.length; i++) {
+            str1 += arr[Number(str[i])]
+        }
+        return str1;
+    }
+
+    function getNumberCN(num, bool) {
+        if (num > 1000) return;
+        var str = "";
+        if (num > 100) str = arr[parseInt(num / 100)] + "百";
+        num = num % 100;
+        if (num === 0) return (str.length > 0) ? str : arr[num];
+        if (num <= 10) return (str.length > 0 || bool) ? str + "零" + arr[num] : arr[num];
+        if (num < 20) return str.length > 0 ? str + "一十" + arr[num % 10] : str + "十" + arr[num % 10];
+        if (num % 10 === 0) return str + arr[num / 10] + "十";
+        return str + arr[parseInt(num / 10)] + "十" + arr[num % 10];
+    }
 </script>
 
 <script>
